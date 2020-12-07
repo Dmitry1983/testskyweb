@@ -1,0 +1,6 @@
+module Pods_testskyweb_testskywebTests {
+  umbrella header "Pods-testskyweb-testskywebTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
