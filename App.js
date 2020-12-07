@@ -17,7 +17,7 @@ const App = () => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <Image
-          style={{ width: 200, height: 200, marginBottom: 20 }}
+          style={styles.image}
           source={require('./assets/items/logo.png')}
           resizeMode="contain"
         />
@@ -55,6 +55,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
   },
   textInput: {
     marginVertical: 20,
