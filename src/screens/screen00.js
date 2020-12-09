@@ -18,7 +18,7 @@ export const Screen00 = ({ navigation }) => {
     if (name === 'test' && password === 'test') {
       navigation.navigate('Drawer')
     } else {
-      Alert.alert('Неверно введен логин или пароль')
+      Alert.alert('Неверно введен логин(test) или пароль(test)')
     }
   }
   return (

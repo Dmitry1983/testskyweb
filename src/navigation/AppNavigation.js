@@ -10,9 +10,6 @@ const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator()
 const TabNavigator = createBottomTabNavigator()
 
-const HomeStack = createStackNavigator()
-const SettingsStack = createStackNavigator()
-
 function ButtonTab() {
   return (
     <TabNavigator.Navigator
@@ -53,7 +50,6 @@ function StackNavigator() {
   return (
     <Stack.Navigator
       initialRouteName={ROUTE.SCREEN00}
-      // initialRouteName="Set"
       headerMode="none"
       mode="card"
     >
