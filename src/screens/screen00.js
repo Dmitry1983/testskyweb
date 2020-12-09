@@ -11,14 +11,18 @@ import {
   Alert,
 } from 'react-native'
 
+import { useSelector } from 'react-redux'
+
 export const Screen00 = ({ navigation }) => {
-  const [name, setName] = useState('')
-  const [password, setPassword] = useState('')
+  const { username, password } = useSelector((state) => state.authReducer)
+  const [usernameIn, setUsernameIn] = useState('')
+  const [passwordIn, setPaswordIn] = useState('')
+
   const goToNextScreen = () => {
-    if (name === 'test' && password === 'test') {
+    if (username === usernameIn && password === passwordIn) {
       navigation.navigate('Drawer')
     } else {
-      Alert.alert('Неверно введен логин(test) или пароль(test)')
+      Alert.alert('Неверно введен логин  или пароль!!!')
     }
   }
   return (
@@ -33,10 +37,10 @@ export const Screen00 = ({ navigation }) => {
         <TextInput
           style={styles.textInput}
           placeholderTextColor="grey"
-          placeholder="name"
+          placeholder="username"
           selectionColor="black"
-          onChangeText={(value) => setName(value.toString())}
-          value={name}
+          value={usernameIn}
+          onChangeText={(text) => setUsernameIn(text)}
         />
         <TextInput
           style={styles.textInput}
@@ -44,8 +48,8 @@ export const Screen00 = ({ navigation }) => {
           placeholder="password"
           selectionColor="black"
           secureTextEntry
-          onChangeText={(value) => setPassword(value.toString())}
-          value={password}
+          value={passwordIn}
+          onChangeText={(text) => setPaswordIn(text)}
         />
         <TouchableOpacity
           style={styles.button}
@@ -53,7 +57,9 @@ export const Screen00 = ({ navigation }) => {
         >
           <Text style={styles.textButton}>Sign In</Text>
         </TouchableOpacity>
-
+        <Text style={styles.textIntro}>Saved username/password</Text>
+        <Text style={styles.textIntro}>username: {username}</Text>
+        <Text style={styles.textIntro}>password: {password}</Text>
         <Text style={styles.text}>diBasch test for skyweb</Text>
       </View>
     </TouchableWithoutFeedback>
@@ -87,6 +93,9 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 150,
     color: 'grey',
+  },
+  textIntro: {
+    marginVertical: 5,
   },
   button: {
     marginVertical: 20,
