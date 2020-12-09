@@ -8,7 +8,7 @@ import {
   Keyboard,
 } from 'react-native'
 
-export const Screen01 = () => {
+export const Screen02 = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
@@ -17,7 +17,7 @@ export const Screen01 = () => {
           source={require('../../assets/items/logo.png')}
           resizeMode="contain"
         />
-        <Text style={styles.textNameScreen}>Screen 01</Text>
+        <Text style={styles.textNameScreen}>Screen 02</Text>
 
         <Text style={styles.text}>diBasch test for skyweb</Text>
       </View>

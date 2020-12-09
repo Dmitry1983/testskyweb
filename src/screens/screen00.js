@@ -8,15 +8,17 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+  Alert,
 } from 'react-native'
-import ROUTE from '../constants/route'
 
 export const Screen00 = ({ navigation }) => {
-  const goToNextScreen = () => {
-    navigation.navigate(ROUTE.SCREEN01)
-  }
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
+  const goToNextScreen = () => {
+    name === 'test' && password === 'test'
+      ? navigation.navigate('Drawer')
+      : Alert.alert('неверно введен логин или пароль')
+  }
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
