@@ -9,14 +9,17 @@ import {
   Keyboard,
   TouchableOpacity,
   Alert,
+  Platform,
 } from 'react-native'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { changeUsername, changePassword } from '../actions'
+import { changeUsername, changePassword, changeSignOut } from '../actions'
 
-export const ScreenSettings = ({ navigation }) => {
-  const { username, password } = useSelector((state) => state.authReducer)
+export const ScreenSettings = () => {
+  const { username, password } = useSelector((state) => state.user)
   const dispatch = useDispatch()
+
+  const handlerSignOut = () => dispatch(changeSignOut())
 
   const handlerUsername = useCallback(
     (name) => {
@@ -34,7 +37,7 @@ export const ScreenSettings = ({ navigation }) => {
 
   const goToNextScreen = () => {
     if (username !== '' && password !== '') {
-      navigation.navigate('SCREEN00')
+      handlerSignOut()
     } else {
       Alert.alert('Введите логин(test) и пароль(test)')
     }
@@ -96,6 +99,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     marginBottom: 20,
+    marginTop: Platform.OS === 'android' ? 80 : 0,
   },
   textInput: {
     marginVertical: 20,

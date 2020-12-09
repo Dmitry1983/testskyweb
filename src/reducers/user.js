@@ -5,8 +5,7 @@ const initialState = {
   password: 'test',
 }
 
-export default function authReducer(state = initialState, action) {
-  // console.log(action)
+export default function user(state = initialState, action) {
   switch (action.type) {
     case USERNAME:
       return {

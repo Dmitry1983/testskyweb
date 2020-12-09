@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Screen00, Screen01, Screen02, ScreenSettings } from '../screens'
+import { useSelector } from 'react-redux'
 import ROUTE from '../constants/route'
 
 const Stack = createStackNavigator()
@@ -47,14 +48,18 @@ function DrawerTab() {
 }
 
 function StackNavigator() {
+  const { sign } = useSelector((state) => state.auth)
   return (
     <Stack.Navigator
-      initialRouteName={ROUTE.SCREEN00}
+      // initialRouteName={ROUTE.SCREEN00}
       headerMode="none"
       mode="card"
     >
-      <Stack.Screen name={ROUTE.SCREEN00} component={Screen00} />
-      <Stack.Screen name="Drawer" component={DrawerTab} />
+      {sign ? (
+        <Stack.Screen name="Drawer" component={DrawerTab} />
+      ) : (
+        <Stack.Screen name={ROUTE.SCREEN00} component={Screen00} />
+      )}
     </Stack.Navigator>
   )
 }

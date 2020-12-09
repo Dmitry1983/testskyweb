@@ -9,18 +9,23 @@ import {
   Keyboard,
   TouchableOpacity,
   Alert,
+  Platform,
 } from 'react-native'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeSignIn } from '../actions'
 
-export const Screen00 = ({ navigation }) => {
-  const { username, password } = useSelector((state) => state.authReducer)
+export const Screen00 = () => {
+  const { username, password } = useSelector((state) => state.user)
+  const dispatch = useDispatch()
   const [usernameIn, setUsernameIn] = useState('')
   const [passwordIn, setPaswordIn] = useState('')
 
+  const handlerSignIn = () => dispatch(changeSignIn())
+
   const goToNextScreen = () => {
     if (username === usernameIn && password === passwordIn) {
-      navigation.navigate('Drawer')
+      handlerSignIn()
     } else {
       Alert.alert('Неверно введен логин  или пароль!!!')
     }
@@ -77,6 +82,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     marginBottom: 20,
+    marginTop: Platform.OS === 'android' ? 80 : 0,
   },
   textInput: {
     marginVertical: 20,

@@ -1,12 +1,10 @@
-import { USERNAME, PASSWORD } from '../types/index'
+import { SIGNIN, SIGNOUT } from '../types/index'
 
 // -  NAMES ACTION CREATERS
-export const changeUsername = (i) => ({
-  type: USERNAME,
-  payload: i,
+export const changeSignIn = () => ({
+  type: SIGNIN,
 })
 
-export const changePassword = (i) => ({
-  type: PASSWORD,
-  payload: i,
+export const changeSignOut = () => ({
+  type: SIGNOUT,
 })

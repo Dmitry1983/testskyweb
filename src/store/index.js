@@ -15,5 +15,3 @@ const store = createStore(persistedReducer, applyMiddleware(logger))
 const persistor = persistStore(store)
 
 export { store, persistor }
-
-// export default createStore(rootReducer, applyMiddleware(logger))

@@ -1,3 +1,4 @@
-import { changeUsername, changePassword } from './authActions'
+import { changeUsername, changePassword } from './userActions'
+import { changeSignIn, changeSignOut } from './authActions'
 
-export { changeUsername, changePassword }
+export { changeUsername, changePassword, changeSignIn, changeSignOut }
