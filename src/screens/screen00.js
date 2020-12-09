@@ -15,9 +15,11 @@ export const Screen00 = ({ navigation }) => {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const goToNextScreen = () => {
-    name === 'test' && password === 'test'
-      ? navigation.navigate('Drawer')
-      : Alert.alert('неверно введен логин или пароль')
+    if (name === 'test' && password === 'test') {
+      navigation.navigate('Drawer')
+    } else {
+      Alert.alert('Неверно введен логин или пароль')
+    }
   }
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
